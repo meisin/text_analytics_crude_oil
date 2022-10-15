@@ -12,10 +12,16 @@ We propose a vanilla BERT-based **BERTForSequenceClassification** head for this 
 2. Return prediction (percentage of price change) as regression analysis. \
 we use the BERT-based model with **BERTForSequenceClassification** head for the regression task by setting the num_class = 1. The model predicts a single scalar value as output. We use two common losses for price prediction: root mean squared error (RMSE) and mean absolute percentage error (MAPE).
  
-## Comparison with other Text Processing Techniques
-1. Non-event based
+## Comparison with other Event-based Text Processing Approaches
+1. Coarse-grained events:
+   - OpenIE: https://github.com/allenai/allennlp
+   - Numerical OpenIE: https://github.com/dair-iitd/OpenIE-standalone
+2. Fine-grained events:
+   - Frame-semantic parsing (SEMAFOR): https://github.com/swabhs/open-sesame
+   
+## Dataset
 
-2. Event-based
+
 
 ## Repository Contents
 
