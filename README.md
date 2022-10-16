@@ -3,6 +3,9 @@
 ## Introduction
 This repository contains a sample dataset and PyTorch code for the paper entitled **"Crude Oil Price Movement and Return Prediction via Text Analytics on Market Summaries"** (to be submitted to Energy Economics Journal).
 
+### Workflow
+![workflow](fig/workflow.png)
+
 ## Requirements
 
 ## Tasks and Model Architecture:
