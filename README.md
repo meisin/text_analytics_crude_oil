@@ -22,7 +22,7 @@ we use the BERT-based model with **BERTForSequenceClassification** head for the 
    - Frame-semantic parsing (SEMAFOR): https://github.com/swabhs/open-sesame
   
 ## Dataset
-The dataset is made up of oil market summaries found on https://www.investing.com/commodities/crude-oil-news. It is a collection of news from a number of sources namely: from www.investing.com's own articles and from other sources such as www.Reuters,com,4 and www.oilprice.com. Duration is from 2011 to 2019.
+The dataset is made up of oil market summaries found on https://www.investing.com/commodities/crude-oil-news. It is a collection of news from a number of sources namely: from www.investing.com's own articles and from other sources such as www.Reuters,com and www.oilprice.com. Duration is from 2011 to 2019.
 
 ## Repository Contents
 - ```dataset``` folder contains training data- ```event_extraction_train.json``` and testing data- ```event_extraction_test.json```
