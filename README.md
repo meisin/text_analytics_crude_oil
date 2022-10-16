@@ -13,12 +13,14 @@ We propose a vanilla BERT-based **BERTForSequenceClassification** head for this 
 we use the BERT-based model with **BERTForSequenceClassification** head for the regression task by setting the num_class = 1. The model predicts a single scalar value as output. We use two common losses for price prediction: root mean squared error (RMSE) and mean absolute percentage error (MAPE).
  
 ## Comparison with other Event-based Text Processing Approaches
+![comparison](fig/event_based.png)
+
 1. Coarse-grained events:
    - OpenIE: https://github.com/allenai/allennlp
    - Numerical OpenIE: https://github.com/dair-iitd/OpenIE-standalone
 2. Fine-grained events:
    - Frame-semantic parsing (SEMAFOR): https://github.com/swabhs/open-sesame
-   
+  
 ## Dataset
 The dataset is made up of oil market summaries found on https://www.investing.com/commodities/crude-oil-news. It is a collection of news from a number of sources namely: from www.investing.com's own articles and from other sources such as www.Reuters,com,4 and www.oilprice.com. Duration is from 2011 to 2019.
 
