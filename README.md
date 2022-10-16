@@ -6,7 +6,12 @@ This repository contains a sample dataset and PyTorch code for the paper entitle
 ### Workflow
 ![workflow](fig/workflow.png)
 
+
+## Document-Level Information Mining
+
+
 ## Requirements
+
 
 ## Tasks and Model Architecture:
 1. Price movement prediction: UP, DOWN, NO_CHANGE(FLAT) as multiclass classification. \
