@@ -1,0 +1,39 @@
+[
+  {
+    "file": "1_Oil-around-110-on-tight-supply-buoyant-demand.json",
+    "header": "Slow-weak: tight, Positive, Asserted, Neutral, Attribute: supply",
+    "body": [
+      "Slow-weak: tight, Positive, Asserted, Neutral, Attribute: supply",
+      "Grow-strong: growth, Positive, Other, Neutral, Attribute: demand, Supplier_Consumer: United States, Supplier_Consumer2: China",
+      "Movement-down-loss: dropped, Positive, Asserted, Neutral, Supplier_Consumer: Libya, Attribute: exports, Item: Oil",
+      "Movement-down-loss: removing, Positive, Asserted, Neutral, Difference: 1.4 million barrels per day (bpd), Item: crude",
+      "Embargo: sanctions, Positive, Asserted, Neutral, Imposee: Iran, Imposer: Western",
+      "Civil-unrest: turmoil, Positive, Asserted, Neutral, Place: oil producers",
+      "Cause-movement-down-loss: reduced, Positive, Asserted, Neutral, Attribute: supply",
+      "Movement-up-gain: picking up, Positive, Asserted, Neutral, Attribute: demand, Item: oil",
+      "Movement-up-gain: gain, Positive, Asserted, Neutral, ",
+      "Movement-up-gain: advance, Positive, Asserted, Neutral, Duration: two months",
+      "Movement-up-gain: up, Positive, Asserted, Neutral, Item: It, Difference: 1.7 percent",
+      "Movement-up-gain: gain, Positive, Asserted, Neutral, Initial_reference_point: April",
+      "Cause-movement-down-loss: cut, Positive, Asserted, Neutral, ",
+      "Movement-down-loss: drop, Positive, Other, Neutral, Item: crude, Attribute: inventories, Supplier_Consumer: U.S.",
+      "Movement-down-loss: decline, Positive, Other, Neutral, Attribute: stockpiles, Difference: 1.5 million barrels, Item: U.S. crude",
+      "Grow-strong: Stronger, Positive, Asserted, Neutral, Attribute: demand",
+      "Movement-flat: maintain, Positive, Other, Neutral, Attribute: production, Final_value: 30 million bpd",
+      "Shortage: shortage, Negative, Asserted, Neutral, Attribute: supply"
+    ],
+    "brent_label": "UP",
+    "brent_difference": 0.1818347122465679,
+    "wti_label": "UP",
+    "wti_difference": 0.3352169332439421
+  },
+  {
+    "file": "2_china-oil-futures-surge-on-their-debut.json",
+    "header": "Movement-up-gain: surge, Positive, Asserted, Neutral, Attribute: futures, Item: oil, Supplier_Consumer: China",
+    "body": [
+      "Movement-up-gain: surged, Positive, Asserted, Neutral, Attribute: futures, Item: crude-oil, Supplier_Consumer: China, Reference_point_time: Monday",
+      "Movement-up-gain: up, Positive, Asserted, Neutral, Contract_date: September, Attribute: futures contract, Difference: 3.3%",
+      "Movement-up-gain: up, Positive, Asserted, Neutral, Difference: more than 6%, Initial_value: 416 yuan per barrel"
+    ]
+  }
+]
