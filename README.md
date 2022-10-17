@@ -6,14 +6,15 @@ This repository contains a sample dataset and PyTorch code for the paper entitle
 ### Workflow
 ![workflow](fig/workflow.png)
 
+With reference to the workflow diagram above, this repository provides the codes for **Document_Level Information Mining** and **Crude Oil Movement and Returns Prediction**. To ensure the codes execute as per intended, please maintained the folder structure similar to this repository.
 
-## Document-Level Information Mining
+### 1. Document-Level Information Mining
+Run _document_mining.py_ 
+``` document_mining.py ```
 
 
-
-
-
-## Tasks and Model Architecture:
+### 2. Crude Oil Movement and Returns Prediction
+#### Model Architecture:
 1. Price movement prediction: UP, DOWN, NO_CHANGE(FLAT) as multiclass classification. \
 We propose a vanilla BERT-based **BERTForSequenceClassification** head for this classification task. The extracted span vectors are fed into the model; BERT's **BERTForSequenceClassification** head is equipped with a \textit{sigmoid} activation function to predict one of the three classes: UP, DOWN, FLAT.
 
