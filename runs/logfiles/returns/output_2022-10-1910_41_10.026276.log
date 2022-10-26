@@ -1,0 +1,6 @@
+INFO:__main__:=====Commodity Price Movement Classification=====
+INFO:__main__:***** Running training *****
+INFO:__main__:training loss : 0.14954626560211182
+INFO:__main__:epoch # 1
+INFO:__main__:f1 - 0.22881504188043272
+INFO:__main__:MCC -0.8507364873785117

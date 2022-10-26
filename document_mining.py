@@ -12,6 +12,7 @@ price_dict = {'UP': ['MOVEMENT-UP-GAIN', 'GROW-STRONG', 'CAUSE-MOVEMENT-UP-GAIN'
               'DOWN': ['MOVEMENT-DOWN-LOSS', 'SLOW-WEAK', 'CAUSE-MOVEMENT-DOWN-LOSS'],
               'FLAT': ['MOVEMENT-FLAT']
              }
+price_att = ['price', 'prices', 'futures', 'contract', 'contracts', 'futures contract', 'futures prices', 'futures price']
              
 def process_file(data, file_name):
     
@@ -28,9 +29,7 @@ def process_file(data, file_name):
             for event in sent['golden-event-mentions']:
                 data_list.append(sub_process_file(event, 'S'))
     
-    #for data in data_list:
-    #    if data['price'] == 'n':
-    #        print(data)
+
     summary = restructure_data(data_list, file_name)
     return summary
     
@@ -60,19 +59,27 @@ def sub_process_file(event, sent_type):
     return data_dict
 
 def is_price(event):
+    
     Brent, WTI, generic_price =  False, False, False
       
     movement_label = [key for key, value in price_dict.items() if event['event_type'].upper() in value]
     if len(movement_label)> 0:
-        for arg in event['arguments']:
-            if 'Brent' in arg['text']:
-                Brent = True
-                break
-            elif ('WTI' in arg['text']) or ('west texas' in arg['text'].lower()) or ('new york' in arg['text'].lower()) or ('nymex' in arg['text'].lower()) or ('U.S. oil' in arg['text']):
-                WTI = True
-                break
-            elif (arg['role'] == 'Attribute') and (arg['text'] == 'prices' or arg['text'] == 'price'):
+        for arg in event['arguments']: 
+            
+            if (arg['role'].upper() == 'ATTRIBUTE') and (arg['text'] in price_att):
                 generic_price = True
+                break                
+        
+        if generic_price ==  True:
+            for arg in event['arguments']:
+                if 'Brent' in arg['text']:
+                    Brent = True
+                    break
+                elif ('WTI' in arg['text']) or ('west texas' in arg['text'].lower()) or ('new york' in arg['text'].lower()) or \
+                     ('nymex' in arg['text'].lower()) or ('U.S. oil' in arg['text']) or ('U.S. crude' in arg['text']) or \
+                     ('U.S.' in arg['text'] or ('crude' in arg['text'].lower())):
+                    WTI = True
+                    break
     
         if WTI:
             price_details = retrieve_price_details(event['arguments'])       
@@ -98,16 +105,25 @@ def retrieve_price_details(args):
     flat_args['Difference_money'] = 0
     flat_args['Initial_value'] = 0
     flat_args['Final_value'] = 0
+       
+    
     for arg in args:
-        ### Final Value ##
-        if arg['role'] == 'Final_value':
+        ### Final Value ##     
+        
+        if arg['role'].upper() == 'FINAL_VALUE':
             flat_args['Final_value'] = process_numbers_in_text(arg['text'])
-        elif arg['role'] == 'Initial_value':
+        
+        elif arg['role'].upper() == 'INITIAL_VALUE':
             flat_args['Initial_value'] = process_numbers_in_text(arg['text'])
-        elif (arg['role'] == 'Difference') and (arg['entity-type'] == "Percentage"):
+        
+        elif (arg['role'].upper() == 'DIFFERENCE') and (arg['entity-type'].upper() == "PERCENTAGE"):
             flat_args['Difference'] = process_numbers_in_text(arg['text'])
-        elif (arg['role'] == 'Difference') and (arg['entity-type'] == "Money" or arg['entity-type'] == 'Price_unit'):
+        
+        elif (arg['role'].upper() == 'DIFFERENCE') and (arg['entity-type'].upper() == "MONEY" or \
+                                                        arg['entity-type'].upper() == 'PRICE_UNIT'):
             flat_args['Difference_money'] = process_numbers_in_text(arg['text'])
+            #print(arg['text'])
+        
         
     if flat_args['Difference'] == 0:
         if flat_args['Difference_money'] != 0 and flat_args['Initial_value'] != 0:   ### do calculation
@@ -119,12 +135,17 @@ def retrieve_price_details(args):
         
     return flat_args
         
+        
     
 def restructure_data(data_list, file_name):
     summary= {}
     summary['file'] = file_name
     summary['header'] = ''
     summary['body'] = []
+    summary['wti_label'] = ' '
+    summary['wti_difference'] = 0
+    summary['brent_label'] = ' '
+    summary['brent_difference'] = 0
     for entry in data_list:
         
         ######    Header ###########
@@ -179,16 +200,16 @@ def process_numbers_in_text(text):
         value = float(re.findall('\d{1,3}(?:,\d{3})*(?:\.\d+)?(?=\s)', text)[0])/100
         
     if len([x for x in re.findall('USD', text)]) > 0:
-        value = float(re.findall('(?<=USD)\d{1,3}(?:,\d{3})*(?:\.\d+)?', text)[0].replace(',',''))
+        value = float(re.findall('\d{1,3}(?:,\d{3})*(?:\.\d+)?', text)[0].replace(',',''))
         
     if len([x for x in re.findall('\$', text)]) > 0:
-        value = float(re.findall('(?<=\$)\d{1,3}(?:,\d{3})*(?:\.\d+)?', text)[0].replace(',',''))
+        value = float(re.findall('\d{1,3}(?:,\d{3})*(?:\.\d+)?', text)[0].replace(',',''))
         
 
     ####    PERCENTAGE  ####
     
     if len([x for x in re.findall('\%', text)]) > 0:
-        value = float(re.findall('\d{1,3}(?:\.\d+)*%', text)[0].replace('%',''))
+        value = float(re.findall('\d{1,3}(?:\.\d+)*', text)[0].replace('%',''))
         
     if len([x for x in re.findall('percent', text)]) > 0:
         value = float(re.findall('\d{1,3}(?:\.\d+)*', text)[0].replace('%',''))
@@ -216,8 +237,7 @@ def main():
         try:
             with open(join(DATA_DIRECTORY, file_name), 'r') as f:
                 data = json.load(f)
-                process_file(data, file_name)
-                
+                json_data.append(process_file(data, file_name))
         except Exception as e:
             print(e)
     write_to_json(join(OUTPUT_DIRECTORY, 'processed_data.json'), json_data)
