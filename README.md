@@ -41,10 +41,13 @@ The dataset is made up of oil market summaries found on https://www.investing.co
    - training data- ```train_data.json```
    - validation data- ```eval_data.json```
    - testing data- ```test_data.json```
-- ```data``` folder contains (1) ```const.py``` file with Event Labels, Entity Labels, Argument Role Labels and other constants and (2) ```data_loader.py``` with functions relating to the loading of data.
-- ```utils``` folder contains helper functions and Tree structure related functions.
-- ```model``` folder contains the main Event Extraction Model ```event_extraction.py``` and Graph Convolution Model ```graph_convolution.py```
-- ```runs``` folder contains the output of the executions (see Ouput section below for details)
+- ```data``` folder contains (1) ```const.py``` file with Event Labels, Entity Labels, Argument Role Labels and other constants and 
+- ```utils``` folder contains helper/utility functions:
+   -   ```const.py``` file contains the labels for event properties (Polarity, Modality and Intensity) and as well as labels for price movement. 
+   -   ```data_loader.py``` file contains functions relating to the loading of data.
+   -   ```helper_functions.py``` file contains helper and utility functions needed for the training of the models.
+- ```model``` folder contains the CommodityPricePrediction model ```CommodityPricePrediction.py```
+- ```runs``` folder contains the output of the executions, this includes training and evaluation losses, F1 & MCC scores for price movement prediction and RMSE & MAPE calculations for price returns prediction.
 
 ## Experiments:
 1. News input scope: News Headlines only, news body only and entire article
