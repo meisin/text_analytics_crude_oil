@@ -9,7 +9,7 @@ This repository contains a sample dataset and PyTorch code for the paper entitle
 With reference to the workflow diagram above, this repository provides the codes for **Document_Level Information Mining** and **Crude Oil Movement and Returns Prediction**. To ensure the codes execute as per intended, please maintained the folder structure similar to this repository.
 
 ### 1. Document-Level Information Mining
-Run _document_mining.py_ to use and restructure the extracted events into the input file for the next step: movement and returns prediction. \
+Run _document_mining.py_ to transform and restructure the extracted events from files in the input folder into the _processed data_ suited for movement and returns prediction. \
 Input: raw_data folder 
 Output: dataset folder
 ```python document_mining.py ``` 
@@ -36,7 +36,7 @@ we use the BERT-based model with **BERTForSequenceClassification** head for the 
    - Frame-semantic parsing (SEMAFOR): https://github.com/swabhs/open-sesame
   
 ## Dataset
-The dataset is made up of oil market summaries found on https://www.investing.com/commodities/crude-oil-news. It is a collection of news from a number of sources namely: from www.investing.com's own articles and from other sources such as www.Reuters,com and www.oilprice.com. Duration is from 2011 to 2019.
+The dataset is made up of oil market summaries found on https://www.investing.com/commodities/crude-oil-news. It is a collection of news from a number of sources namely: from _www.investing.com_'s own articles and from other sources such as _www.Reuters.com_ and _www.oilprice.com_. Duration is from 2011 to 2019. Please note that we do not release the original news articles but instead we release the extracted events from the articles. Events (including event arguments and event properties) are extracted through event extraction models trained via supervised learning. As such, please be aware that the datasets contain some errors and should not be treated as gold standards for any price prediction tasks.
 
 ## Repository Contents
 - ```dataset``` folder contains :
