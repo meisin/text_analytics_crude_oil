@@ -10,6 +10,8 @@ With reference to the workflow diagram above, this repository provides the codes
 
 ### 1. Document-Level Information Mining
 Run _document_mining.py_ to use and restructure the extracted events into the input file for the next step: movement and returns prediction. \
+Input: raw_data folder 
+Output: dataset folder
 ```python document_mining.py ``` 
 
 
