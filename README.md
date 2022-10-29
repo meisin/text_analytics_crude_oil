@@ -24,7 +24,10 @@ We propose a vanilla BERT-based **BERTForSequenceClassification** head for this 
 we use the BERT-based model with **BERTForSequenceClassification** head for the regression task by setting the num_class = 1. The model predicts a single scalar value as output. We use two common losses for price prediction: root mean squared error (RMSE) and mean absolute percentage error (MAPE).
 
 ### Requirements
-
+1. Python 3
+2. PyTorch 1.10.2
+3. Transformer 4.15
+To install the requirements, run pip install -r requirements.txt.
 
 ## Comparison with other Event-based Text Processing Approaches
 ![comparison](fig/event-based.png)
