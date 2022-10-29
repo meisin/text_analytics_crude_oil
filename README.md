@@ -55,10 +55,11 @@ The dataset is made up of oil market summaries found on https://www.investing.co
 - ```runs``` folder contains the output of the executions, this includes training and evaluation losses, F1 & MCC scores for price movement prediction and RMSE & MAPE calculations for price returns prediction.
 
 ## Experiments:
-1. To run the training of classification Task:
-```python train.py --train_data_file="dataset/train_data.json" --eval_data_file="dataset/eval_data.json" --batch_size=8 --learning_rate=0.00002 --n_epochs=60 --dropout=0.25 --content_scope="all" --news_part="all" --output_dir="checkpoints"```
+1. To run the training of classification task: \
+```python movement_train.py --train_data_file="dataset/train_data.json" --eval_data_file="dataset/eval_data.json" --batch_size=8 --learning_rate=0.00002 --n_epochs=60 --dropout=0.25 --content_scope="all" --news_part="all" --output_dir="checkpoints"```
 
-2. 
+2. To run the training of regression task: \
+```python returns_train.py --train_data_file="dataset/train_data.json" --eval_data_file="dataset/eval_data.json" --batch_size=8 --learning_rate=0.00035 --clip_value=2  --n_epochs=60 --dropout=0.125 --content_scope="all" --news_part="all" --output_dir="checkpoints"```
 
 ### Parameters:
 1. News input scope: News Headlines only, news body only and entire article
@@ -69,7 +70,3 @@ The dataset is made up of oil market summaries found on https://www.investing.co
    - Event Trigger + Arguments - Properties (parameter: _minus_properties_)
    - Event Trigger - Arguments + Properties (parameter: _minus_arguments_)
    - Event Trigger - Arguments - Properties (parameter: _minus_arguments_properties_)
-
-
-
-
