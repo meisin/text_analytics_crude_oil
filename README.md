@@ -27,7 +27,7 @@ we use the BERT-based model with **BERTForSequenceClassification** head for the 
 1. Python 3
 2. PyTorch 1.10.2
 3. Transformer 4.15
-To install the requirements, run pip install -r requirements.txt.
+To install the requirements, run ```pip install -r requirements.txt.```
 
 ## Comparison with other Event-based Text Processing Approaches
 ![comparison](fig/event-based.png)
